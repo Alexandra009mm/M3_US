@@ -1,0 +1,177 @@
+@charset "UTF-8";
+/* =============================================
+   VARIABLES CSS  ← NUEVO: centraliza los colores
+   ============================================= */
+:root {
+  --blue-900: #1e3a8a;
+  --blue-700: #1d4ed8;
+  --blue-600: #2563eb;
+  --blue-400: #60a5fa;
+  --blue-100: #dbeafe;
+  --bg-dark: #04082e;
+  --card-bg: rgba(255, 255, 255, 0.07);
+  --card-border: rgba(96, 165, 250, 0.2);
+  --text-light: #e2e8f0;
+  --text-muted: #94a3b8;
+  --radius-card: 16px;
+  --radius-btn: 10px;
+  --shadow-card: 0 8px 32px rgba(37, 99, 235, 0.25);
+  --shadow-btn: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+/* =============================================
+   RESET
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =============================================
+   ANIMACIONES  ← NUEVO: entrada suave al cargar
+   ============================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+/* =============================================
+   BODY Y FONDO
+   ============================================= */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  /* Degradado sutil en el fondo */
+  background-image: radial-gradient(ellipse at 60% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+  overflow: hidden;
+}
+
+/* Círculos decorativos de fondo (sencillos, solo CSS) */
+.bg-circle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bg-circle--1 {
+  width: 340px;
+  height: 340px;
+  top: -80px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 70%);
+}
+
+.bg-circle--2 {
+  width: 260px;
+  height: 260px;
+  bottom: -60px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.12), transparent 70%);
+}
+
+/* =============================================
+   TARJETA PRINCIPAL
+   ============================================= */
+.container {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  /* Animación de entrada */
+  animation: fadeInUp 0.5s ease both;
+  /* Efecto cristal sutil */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Ícono decorativo */
+.container__icon {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  display: block;
+  line-height: 1;
+}
+
+h2 {
+  color: var(--text-light);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.container__subtitle {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+/* =============================================
+   BOTÓN
+   ============================================= */
+#btn {
+  position: relative;
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-btn);
+  letter-spacing: 0.01em;
+}
+
+/* Anillo de pulso al hacer hover */
+#btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-btn);
+  border: 2px solid var(--blue-400);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
+}
+
+#btn:hover::before {
+  opacity: 0.5;
+}
+
+#btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-btn);
+}
+
+/*# sourceMappingURL=style.css.map */
