@@ -1,0 +1,125 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono:wght@300;400;500&display=swap");
+
+*, *::before, *::after {
+  box-sizing: border-box; /* Asegura que el padding no altere el ancho total del elemento */
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: #0f0f13;
+  color: #e8e8f0;
+  font-family: "DM Mono", "Courier New", monospace;
+  min-height: 100vh;
+  /* Centrado vertical y horizontal de la app */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px;
+  gap: 16px;
+  background-image: radial-gradient(ellipse at 20% 20%, rgba(255, 107, 157, 0.05) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(100, 80, 255, 0.05) 0%, transparent 50%);
+}
+
+
+h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Escala el título dinámicamente según la pantalla */
+  font-weight: 700;
+  color: #e8e8f0;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+p {
+  font-size: 0.85rem;
+  color: #7a7a9a;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+input#textTarea {
+  padding: 10px 62px;
+  border-radius: 20px;
+}
+
+#btn {
+  padding: 8px 24px;
+  background-color: #ff6b9d;
+  color: #0f0f13;
+  border: none;
+  border-radius: 999px;
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+#btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.2);
+  transform: translateY(-1px);
+}
+#btn:active {
+  transform: translateY(0);
+}
+
+#listaDeNotas li button {
+  padding: 4px 8px;
+  /* !important fuerza estos estilos sobre las inyecciones directas de JS */
+  background-color: rgba(255, 77, 109, 0.15) !important;
+  color: #ff4d6d !important;
+  border: 1px solid #ff4d6d;
+  border-radius: 6px;
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0; /* Evita que el botón se deforme si el texto de la nota es largo */
+}
+#listaDeNotas li button:hover {
+  background-color: #ff4d6d !important;
+  color: white !important;
+}
+
+#listaDeNotas {
+  width: min(100%, 480px); /* Responsive: 100% en móvil, máximo 480px en escritorio */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+#listaDeNotas li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Separa el texto a la izquierda y el botón a la derecha */
+  gap: 16px;
+  padding: 16px 24px;
+  background-color: #1a1a24;
+  border: 1px solid #2e2e4a;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: #e8e8f0;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+#listaDeNotas li:hover {
+  border-color: #ff6b9d;
+  background-color: #22223a;
+}
+
+/* Viñeta personalizada autogenerada antes de cada nota */
+#listaDeNotas li::before {
+  content: "›";
+  color: #ff6b9d;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
